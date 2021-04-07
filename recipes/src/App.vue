@@ -14,6 +14,11 @@
     </div>
 
     <router-view />
+    <div class="footer" id="footer">
+    <a href="https://github.com/YoungCree/recipes">
+      <img class="footer-img" src="/images/github.png" alt="">
+    </a>
+  </div>
   </div>
 </template>
 
@@ -44,5 +49,29 @@ export default {
 
 .pure-menu-link:hover {
   background-color: black !important;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  position: relative;
+  bottom: 0;
+  background-color: #e6e6e6;
+}
+
+.footer-img-link {
+  width: 30px;
+}
+
+.footer-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30px;
+  height: 30px;
 }
 </style>
