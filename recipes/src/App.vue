@@ -8,7 +8,7 @@
               <a href="/" class="pure-menu-link">Cooks</a>
           </li>
           <li class="pure-menu-item">
-              <a href="/recipes" class="pure-menu-link">Recipes</a>
+              <router-link class="pure-menu-link" to="/recipes">Recipes</router-link>
           </li>
       </ul>
     </div>
