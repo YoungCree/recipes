@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <div class="pure-menu pure-menu-horizontal">
+    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
       <a href="#" class="pure-menu-heading pure-menu-link">Web Kitchen</a>
       <ul class="pure-menu-list">
           <li class="pure-menu-item">
@@ -9,6 +9,9 @@
           </li>
           <li class="pure-menu-item">
               <router-link class="pure-menu-link" to="/recipes">Recipes</router-link>
+          </li>
+          <li class="pure-menu-item">
+            <router-link class="pure-menu-link" to="/favorites">My Favorites</router-link>
           </li>
       </ul>
     </div>
@@ -18,6 +21,7 @@
     <a href="https://github.com/YoungCree/recipes">
       <img class="footer-img" src="/images/github.png" alt="">
     </a>
+    <p>Time Spent: 6 hours</p>
   </div>
   </div>
 </template>
@@ -53,6 +57,7 @@ export default {
 
 .footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   padding-top: 50px;

@@ -24,6 +24,7 @@
       <p>{{recipe.desc}}</p>
       <button @click="showEdit(recipe)">Edit</button>
       <button @click="deleteRecipe(recipe)">Delete</button>
+      <button v-if="user" @click="addFavorite(recipe)">Favorite</button>
       <div class="recipe-edit" :id="recipe._id">
         <div class="recipe-form">
           <input type="text" v-model="editRecipeTitle">
@@ -55,14 +56,23 @@ export default {
       currentEditID: '',
     }
   },
-  created() {
+  async created() {
     this.getRecipes();
     this.getCooks();
+    try {
+      let response = await axios.get('/api/users');
+      this.$root.$data.user = response.data.user;
+    } catch (error) {
+      this.$root.$data.user = null;
+    }
   },
   computed: {
     suggestions() {
       let cooks = this.cooks.filter(cook => cook.name.toLowerCase().startsWith(this.findCook.toLowerCase()));
       return cooks.sort((a, b) => a.title > b.title);
+    },
+    user() {
+      return this.$root.$data.user;
     }
   },
   methods: {
@@ -143,6 +153,14 @@ export default {
       try {
         const response = await axios.get(`/api/cooks/${this.cookFound._id}/recipes`);
         this.recipes = response.data;
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async addFavorite(recipe) {
+      try {
+        await axios.post(`api/users/add/` + recipe._id);
         return true;
       } catch (error) {
         console.log(error);
